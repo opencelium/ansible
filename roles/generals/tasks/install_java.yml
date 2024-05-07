@@ -1,0 +1,13 @@
+---
+# tasks file for install java
+
+# install openjdk-8-jdk
+
+- name: install openjdk-17-jdk
+  become: true
+  apt:
+    name: 'openjdk-17-jdk'
+    state: latest
+    update-cache: yes
+  changed_when: 0
+

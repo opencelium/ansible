@@ -1,0 +1,5 @@
+---
+# vars file for generals
+mysql_root_password: root
+
+neo4j_password: secret1234

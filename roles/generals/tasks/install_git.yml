@@ -1,0 +1,12 @@
+---
+# tasks file for install git
+
+# install yarn
+
+- name: install git
+  become: true
+  apt:
+    name: 'git'
+    state: latest
+    update-cache: yes
+  changed_when: 0

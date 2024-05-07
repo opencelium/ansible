@@ -1,0 +1,47 @@
+---
+# tasks file for install neo4j
+
+# do add public key
+
+- name: add public key
+  apt_key:
+    url: https://debian.neo4j.com/neotechnology.gpg.key
+    state: present
+
+# do add repo
+- name: add neo4j repo
+  become: true
+  apt_repository:
+        repo: deb https://debian.neo4j.com stable latest
+
+# do an "apt-get update", to ensure latest package lists
+
+- name: apt-get update
+  become: true
+  apt:
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# install neo4j
+
+- name: install neo4j
+  become: true
+  apt:
+    name: 'neo4j=1:5.7.0'
+    update-cache: yes
+  changed_when: 0
+
+# set initial password
+- name: set initial password
+  become: true
+  command: /usr/bin/neo4j-admin dbms set-initial-password {{ neo4j_password }}
+  ignore_errors: yes 
+
+# start neo4j
+- name: start service neo4j
+  ansible.builtin.service:
+    name: 'neo4j'
+    enabled: yes
+    state: started
+

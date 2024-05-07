@@ -1,0 +1,34 @@
+---
+# tasks file for install yarn
+
+# do add public key
+
+- name: add public key
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    state: present
+
+# do add repo
+- name: add yarn repo
+  become: true
+  apt_repository:
+        repo: deb https://dl.yarnpkg.com/debian/ stable main
+
+# do an "apt-get update", to ensure latest package lists
+
+- name: apt-get update
+  become: true
+  apt:
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# install yarn
+
+- name: install yarn
+  become: true
+  apt:
+    name: 'yarn'
+    state: latest
+    update-cache: yes
+  changed_when: 0

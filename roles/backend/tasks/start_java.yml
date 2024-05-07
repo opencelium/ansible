@@ -1,0 +1,28 @@
+---
+# tasks file for start java
+
+# do copy java config file
+- name: copying java config file
+  copy:
+    src: /opt/src/backend/src/main/resources/application_default.yml
+    dest: /opt/src/backend/src/main/resources/application.yml
+
+# setup datastore 2
+- name: Create database
+  become: true
+  command: mysql -u root -p{{mysql_root_password}} -e 'source /opt/src/backend/database/oc_data.sql'
+
+# build java packages
+- name: build backend
+  become: true
+  command: gradle build
+  args:
+    chdir: /opt/src/backend
+
+# start java
+- name: start backend in backgound
+  become: true
+  command: oc start_backend
+  async: 2592000               # 60*60*24*30 – 1 month
+  poll: 0
+

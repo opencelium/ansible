@@ -1,0 +1,27 @@
+---
+# tasks file for install gradle
+
+# do add repo
+- name: add gradle repo
+  become: true
+  apt_repository:
+        repo: ppa:cwchien/gradle
+
+# do an "apt-get update", to ensure latest package lists
+
+- name: apt-get update
+  become: true
+  apt:
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# install gradle
+
+- name: install gradle
+  become: true
+  apt:
+    name: 'gradle'
+    state: latest
+    update-cache: yes
+  changed_when: 0

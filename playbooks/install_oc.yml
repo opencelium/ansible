@@ -1,0 +1,6 @@
+---
+- hosts: local
+  roles:
+    - generals
+    - frontend
+    - backend

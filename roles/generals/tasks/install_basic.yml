@@ -1,0 +1,81 @@
+---
+# tasks file for basic's
+
+# do an "apt-get update", to ensure latest package lists
+
+- name: apt-get update
+  become: true
+  apt:
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# do install unzip 
+
+- name: install unzip
+  become: true
+  apt:
+    name: 'unzip'
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# do install libpng-dev
+
+- name: install libpng-dev
+  become: true
+  apt:
+    name: 'libpng-dev'
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# do install libcurl4-gnutls-dev
+
+- name: install libcurl4-gnutls-dev
+  become: true
+  apt:
+    name: 'libcurl4-gnutls-dev'
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# do install libexpat1-dev
+
+- name: install libexpat1-dev
+  become: true
+  apt:
+    name: 'libexpat1-dev'
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# do install gettext
+
+- name: install gettext
+  become: true
+  apt:
+    name: 'gettext'
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# do install libz-dev
+
+- name: install libz-dev
+  become: true
+  apt:
+    name: 'libz-dev'
+    state: latest
+    update-cache: yes
+  changed_when: 0
+
+# do install libssl-dev*
+
+- name: install libssl-dev*
+  become: true
+  apt:
+    name: 'libssl-dev*'
+    state: latest
+    update-cache: yes
+  changed_when: 0

@@ -1,0 +1,8 @@
+---
+# tasks file for get repo
+
+# get git repo
+- git:
+    repo: https://bitbucket.org/becon_gmbh/opencelium.git
+    dest: /opt
+    version: prod
